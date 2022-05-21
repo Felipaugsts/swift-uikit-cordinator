@@ -1,23 +1,32 @@
-//
-//  MainCordinator.swift
-//  swift-uikit-cordinator
-//
-//  Created by FELIPE AUGUSTO SILVA on 19/05/22.
-//
+    //
+    //  MainCordinator.swift
+    //  swift-uikit-cordinator
+    //
+    //  Created by FELIPE AUGUSTO SILVA on 19/05/22.
+    //
 
 import Foundation
 import UIKit
-import Swinject
 
 class MainCordinator: Cordinator {
+
     var navigationController: UINavigationController?
 
     func eventOccurred(with type: Event) {
+        switch type {
+        case .firstViewController:
+            navigateToFirstView()
 
+        case .thirdViewController:
+            navigateToThirdView()
+
+        case .secondViewController:
+            navigateToSecondView()
+        }
     }
 
     func start() {
-        let vm: FirstViewModel = RickAndMortyContainer.shared.resolve(FirstViewModel.self)!
+        let vm = FirstViewModel()
         vm.cordinator = self
 
         let view = ViewController()
@@ -27,7 +36,18 @@ class MainCordinator: Cordinator {
     }
 }
 
+
 extension MainCordinator: navigationProtocol {
+
+    func navigateToFirstView() {
+        let viewModel = FirstViewModel()
+        let view = ViewController()
+
+        viewModel.cordinator = self
+        view.viewModel = viewModel
+        let vc: UIViewController = view
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     func navigateToSecondView() {
         let viewModel = HomePageViewModel()
@@ -36,22 +56,15 @@ extension MainCordinator: navigationProtocol {
         viewModel.cordinator = self
         view.viewModel = viewModel
         let vc: UIViewController = view
-        print("click", vc)
         navigationController?.pushViewController(vc, animated: true)
     }
 
     func navigateToThirdView() {
-        var vc: UIViewController & Coordinating = ThirdViewController()
-        vc.cordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
+        let viewModel = ThirdViewModel()
+        let vc = ThirdViewController()
 
-    func navigateToFirstView() {
-        let vm: FirstViewModel = RickAndMortyContainer.shared.resolve(FirstViewModel.self)!
-        vm.cordinator = self
-        let view = ViewController()
-        let vc: UIViewController  = view
-
+        vc.viewModel = viewModel
+        viewModel.cordinator = self
         navigationController?.pushViewController(vc, animated: true)
     }
 

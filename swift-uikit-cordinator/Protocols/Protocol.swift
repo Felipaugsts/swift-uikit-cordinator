@@ -8,7 +8,7 @@
 import Foundation
 
 protocol navigationProtocol {
+    func navigateToFirstView() -> Void
     func navigateToSecondView() -> Void
     func navigateToThirdView() -> Void
-    func navigateToFirstView() -> Void
 }

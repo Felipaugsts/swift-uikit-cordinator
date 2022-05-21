@@ -7,16 +7,11 @@
 
 import Foundation
 
+
 class FirstViewModel: Coordinating {
     var cordinator: Cordinator?
-    let navigate: navigationProtocol
 
-    init(navigate: navigationProtocol) {
-        self.navigate = navigate
+    func navigateToSecondController() {
+        cordinator?.eventOccurred(with: .secondViewController)
     }
-
-    public func navigateToSecondController() {
-        navigate.navigateToSecondView()
-    }
-
 }

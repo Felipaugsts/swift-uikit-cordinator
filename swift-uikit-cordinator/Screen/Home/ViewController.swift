@@ -8,19 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var viewModel: FirstViewModel = RickAndMortyContainer.shared.resolve(FirstViewModel.self)!
+    public var viewModel: FirstViewModel?
+
     var buttonBg: UIColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.hidesBackButton = true
         title = "Home"
 
         buttonLayout()
     }
 
     @objc func didTapButton() {
-        viewModel.navigateToSecondController()
+        viewModel?.navigateToSecondController()
     }
 
     func buttonLayout() {
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
         view.addSubview(button)
         button.center = view.center
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        Utilities.styleFilledButton(button, color: buttonBg, title: "Second Controller")
+        Utilities.styleFilledButton(button, color: buttonBg, title: "Go to Second page")
     }
 }
 

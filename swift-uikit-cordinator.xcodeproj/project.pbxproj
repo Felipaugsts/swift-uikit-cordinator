@@ -25,7 +25,7 @@
 		C5CCFB89283855D200F1BBDA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCFB88283855D200F1BBDA /* Utilities.swift */; };
 		C5CCFB8B2838633700F1BBDA /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCFB8A2838633700F1BBDA /* FirstViewModel.swift */; };
 		C5CCFB8D2838638A00F1BBDA /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCFB8C2838638A00F1BBDA /* Protocol.swift */; };
-		C5CCFB90283865AF00F1BBDA /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCFB8F283865AF00F1BBDA /* Container.swift */; };
+		C5CCFB942838897100F1BBDA /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCFB932838897100F1BBDA /* ThirdViewModel.swift */; };
 		F763615B7875F9677350E91B /* Pods_swift_uikit_cordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A9002705F28B0EB06EEBA9 /* Pods_swift_uikit_cordinator.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,7 @@
 		C5CCFB88283855D200F1BBDA /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C5CCFB8A2838633700F1BBDA /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
 		C5CCFB8C2838638A00F1BBDA /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		C5CCFB8F283865AF00F1BBDA /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		C5CCFB932838897100F1BBDA /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
 		CF1C8D5A0A768ACF908459FA /* Pods-swift-uikit-cordinator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-uikit-cordinator.debug.xcconfig"; path = "Target Support Files/Pods-swift-uikit-cordinator/Pods-swift-uikit-cordinator.debug.xcconfig"; sourceTree = "<group>"; };
 		D9B94F83253FDC56DE566301 /* Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests.release.xcconfig"; path = "Target Support Files/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F9A9002705F28B0EB06EEBA9 /* Pods_swift_uikit_cordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_uikit_cordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				C5CCFB9128387F0700F1BBDA /* Protocols */,
-				C5CCFB8E2838659700F1BBDA /* Injections */,
 				C5CCFB87283855BE00F1BBDA /* Helpers */,
 				C5CCFB7F283850AE00F1BBDA /* Coordinator */,
 				C5CCFB862838556E00F1BBDA /* Screen */,
@@ -189,6 +188,7 @@
 		C52E36EA2838294D0013E820 /* ThirdController */ = {
 			isa = PBXGroup;
 			children = (
+				C5CCFB922838896400F1BBDA /* View Model */,
 				C5CCFB82283850DD00F1BBDA /* View */,
 			);
 			path = ThirdController;
@@ -263,20 +263,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C5CCFB8E2838659700F1BBDA /* Injections */ = {
-			isa = PBXGroup;
-			children = (
-				C5CCFB8F283865AF00F1BBDA /* Container.swift */,
-			);
-			path = Injections;
-			sourceTree = "<group>";
-		};
 		C5CCFB9128387F0700F1BBDA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				C5CCFB8C2838638A00F1BBDA /* Protocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C5CCFB922838896400F1BBDA /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5CCFB932838897100F1BBDA /* ThirdViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,7 +290,6 @@
 				C52E36AB283719120013E820 /* Sources */,
 				C52E36AC283719120013E820 /* Frameworks */,
 				C52E36AD283719120013E820 /* Resources */,
-				CD0A27D86B4CFC727AFC9EEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,7 +327,6 @@
 				C52E36CB283719150013E820 /* Sources */,
 				C52E36CC283719150013E820 /* Frameworks */,
 				C52E36CD283719150013E820 /* Resources */,
-				7FE8E5CFBF042803BA9D6F19 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -432,23 +430,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7FE8E5CFBF042803BA9D6F19 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests/Pods-swift-uikit-cordinator-swift-uikit-cordinatorUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		ACC5CBFC914D6642A00B9C40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,23 +474,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD0A27D86B4CFC727AFC9EEA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-swift-uikit-cordinator/Pods-swift-uikit-cordinator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-swift-uikit-cordinator/Pods-swift-uikit-cordinator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-swift-uikit-cordinator/Pods-swift-uikit-cordinator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -518,12 +482,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CCFB852838510400F1BBDA /* ViewModel.swift in Sources */,
-				C5CCFB90283865AF00F1BBDA /* Container.swift in Sources */,
 				C5CCFB8B2838633700F1BBDA /* FirstViewModel.swift in Sources */,
 				C52E36E728381F590013E820 /* SecondViewController.swift in Sources */,
 				C52E36E3283719610013E820 /* Cordinator.swift in Sources */,
 				C52E36B7283719120013E820 /* ViewController.swift in Sources */,
 				C52E36E9283829010013E820 /* ThirdViewController.swift in Sources */,
+				C5CCFB942838897100F1BBDA /* ThirdViewModel.swift in Sources */,
 				C5CCFB8D2838638A00F1BBDA /* Protocol.swift in Sources */,
 				C52E36B3283719120013E820 /* AppDelegate.swift in Sources */,
 				C5CCFB89283855D200F1BBDA /* Utilities.swift in Sources */,

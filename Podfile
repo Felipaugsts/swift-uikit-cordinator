@@ -6,7 +6,6 @@ target 'swift-uikit-cordinator' do
   use_frameworks!
 
   # Pods for swift-uikit-cordinator
-  pod 'Swinject'
 
   target 'swift-uikit-cordinatorTests' do
     inherit! :search_paths

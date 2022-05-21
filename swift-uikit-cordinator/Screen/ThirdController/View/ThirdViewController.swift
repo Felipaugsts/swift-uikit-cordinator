@@ -1,25 +1,25 @@
-//
-//  ThirdViewController.swift
-//  swift-uikit-cordinator
-//
-//  Created by FELIPE AUGUSTO SILVA on 20/05/22.
-//
+    //
+    //  ThirdViewController.swift
+    //  swift-uikit-cordinator
+    //
+    //  Created by FELIPE AUGUSTO SILVA on 20/05/22.
+    //
 
 import UIKit
 
-class ThirdViewController: UIViewController, Coordinating {
-    var cordinator: Cordinator?
+class ThirdViewController: UIViewController {
+    public var viewModel: ThirdViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         buttonLayout()
+        self.navigationItem.hidesBackButton = true
         title = "third view"
     }
 
     @objc func didTapButton() {
-        print("test123")
-        cordinator?.eventOccurred(with: .firstViewController)
+        viewModel?.navigateToFirstView()
     }
 
     func buttonLayout() {
@@ -27,7 +27,7 @@ class ThirdViewController: UIViewController, Coordinating {
         view.addSubview(button)
         button.center = view.center
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        Utilities.styleFilledButton(button, color: .purple, title: "First View Controller")
+        Utilities.styleFilledButton(button, color: .purple, title: "Go to First page")
     }
 }
 

@@ -31,7 +31,7 @@ class SecondViewController: UIViewController  {
         view.addSubview(button)
         button.center = view.center
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        Utilities.styleFilledButton(button, color: .red, title: "Third Controller")
+        Utilities.styleFilledButton(button, color: .red, title: "Go to third page")
     }
 
 }
