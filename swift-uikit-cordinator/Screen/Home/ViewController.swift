@@ -8,9 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    public var viewModel: FirstViewModel?
 
-    var buttonBg: UIColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1)
+    // MARK: - Variables
+    public var viewModel: FirstViewModel?
+    let secondButton = Button(size: .medium, title: "Go to page 3", style: .primary)
+    let button  = Button(size: .medium, title: "Go to page 2", style: .secondary)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,18 +22,39 @@ class ViewController: UIViewController {
         title = "Home"
 
         buttonLayout()
+        buttonConstraints()
+
     }
 
-    @objc func didTapButton() {
+    //MARK: - Methods
+
+    @objc func wantToNavigateToSecondView() {
         viewModel?.navigateToSecondController()
     }
-
-    func buttonLayout() {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 45))
-        view.addSubview(button)
-        button.center = view.center
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        Utilities.styleFilledButton(button, color: buttonBg, title: "Go to Second page")
+    @objc func wantToNavigateToThirdView() {
+        viewModel?.navigateToThirdController()
     }
+
+        // MARK: - Button layout
+    func buttonLayout() {
+
+        button.addTarget(self, action: #selector(wantToNavigateToSecondView), for: .touchUpInside)
+        secondButton.addTarget(self, action: #selector(wantToNavigateToThirdView), for: .touchUpInside)
+    }
+    func buttonConstraints() {
+        view.addSubview(button)
+        view.addSubview(secondButton)
+
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+
+            secondButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 20),
+            secondButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            secondButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+    }
+    
 }
 

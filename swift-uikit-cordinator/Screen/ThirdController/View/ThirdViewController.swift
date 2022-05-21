@@ -9,13 +9,14 @@ import UIKit
 
 class ThirdViewController: UIViewController {
     public var viewModel: ThirdViewModel?
+    let button = Button(size: .medium, title: "Go to page 1", style: .primary)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         buttonLayout()
         self.navigationItem.hidesBackButton = true
-        title = "third view"
+        title = "Third View Controller"
     }
 
     @objc func didTapButton() {
@@ -23,11 +24,13 @@ class ThirdViewController: UIViewController {
     }
 
     func buttonLayout() {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 45))
         view.addSubview(button)
-        button.center = view.center
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        Utilities.styleFilledButton(button, color: .purple, title: "Go to First page")
+
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 

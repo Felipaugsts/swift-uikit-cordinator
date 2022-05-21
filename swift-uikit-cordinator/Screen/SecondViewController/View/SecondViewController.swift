@@ -10,12 +10,13 @@ import UIKit
 class SecondViewController: UIViewController  {    
 
     public var viewModel: HomePageViewModel?
+    let button = Button(size: .medium, title: "Go to page 3", style: .primary)
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Second view"
+        title = "Second View Controller"
         self.navigationItem.hidesBackButton = true
         
         buttonLayout()
@@ -23,15 +24,16 @@ class SecondViewController: UIViewController  {
 
     @objc func didTapButton() {
         viewModel?.navigateToThirdView()
-//        cordinator?.eventOccurred(with: .thirdViewController)
     }
 
     func buttonLayout() {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 45))
         view.addSubview(button)
-        button.center = view.center
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        Utilities.styleFilledButton(button, color: .red, title: "Go to third page")
+
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
 }

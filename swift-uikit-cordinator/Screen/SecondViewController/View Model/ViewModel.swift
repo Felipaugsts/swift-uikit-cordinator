@@ -12,6 +12,6 @@ class HomePageViewModel: Coordinating {
     var cordinator: Cordinator?
 
     func navigateToThirdView() {
-        cordinator?.eventOccurred(with: .thirdViewController)
+        cordinator?.navigate(to: .thirdViewController)
     }
 }

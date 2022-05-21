@@ -13,6 +13,6 @@ class ThirdViewModel: Coordinating {
 
         // MARK: Methods
     func navigateToFirstView() {
-        cordinator?.eventOccurred(with: .firstViewController)
+        cordinator?.navigate(to: .firstViewController)
     }
 }

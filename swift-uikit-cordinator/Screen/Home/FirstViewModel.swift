@@ -11,7 +11,12 @@ import Foundation
 class FirstViewModel: Coordinating {
     var cordinator: Cordinator?
 
+    // MARK: - Methods
     func navigateToSecondController() {
-        cordinator?.eventOccurred(with: .secondViewController)
+        cordinator?.navigate(to: .secondViewController)
+    }
+
+    func navigateToThirdController() {
+        cordinator?.navigate(to: .thirdViewController)
     }
 }

@@ -12,19 +12,6 @@ class MainCordinator: Cordinator {
 
     var navigationController: UINavigationController?
 
-    func eventOccurred(with type: Event) {
-        switch type {
-        case .firstViewController:
-            navigateToFirstView()
-
-        case .thirdViewController:
-            navigateToThirdView()
-
-        case .secondViewController:
-            navigateToSecondView()
-        }
-    }
-
     func start() {
         let vm = FirstViewModel()
         vm.cordinator = self
@@ -36,8 +23,21 @@ class MainCordinator: Cordinator {
     }
 }
 
-
+    // MARK: - MainCordinator Extension
 extension MainCordinator: navigationProtocol {
+
+    func navigate(to type: Event) {
+        switch type {
+        case .firstViewController:
+            navigateToFirstView()
+
+        case .thirdViewController:
+            navigateToThirdView()
+
+        case .secondViewController:
+            navigateToSecondView()
+        }
+    }
 
     func navigateToFirstView() {
         let viewModel = FirstViewModel()
