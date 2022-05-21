@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_swift_uikit_cordinator_swift_uikit_cordinatorUITests : NSObject
+@end
+@implementation PodsDummy_Pods_swift_uikit_cordinator_swift_uikit_cordinatorUITests
+@end

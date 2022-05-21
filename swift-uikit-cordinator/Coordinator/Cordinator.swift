@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 enum Event {
-    case buttonTapped
+    case firstViewController
+    case thirdViewController
+    case secondViewController
 }
 
 protocol Cordinator {
